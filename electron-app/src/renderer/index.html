@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self' http://localhost:*; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <title>KnowVault-Core Desktop</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header id="header">
+    <h1>KnowVault-Core Desktop</h1>
+    <span id="status-badge" class="badge badge-loading">Conectando…</span>
+    <span id="user-badge" class="badge badge-user hidden">Sin sesión</span>
+    <button id="login-btn" class="btn-header" title="Iniciar sesión">🔑</button>
+    <input type="text" id="search-input" placeholder="Buscar documentos…">
+    <button id="btn-deleted" class="btn-header" title="Documentos eliminados">🗑️</button>
+  </header>
+
+  <main id="main">
+    <aside id="sidebar">
+      <h2>Documentos</h2>
+      <ul id="document-list"></ul>
+      <p id="loading-msg" class="state-msg">Cargando…</p>
+      <p id="empty-msg" class="state-msg hidden">No hay documentos publicados.</p>
+      <p id="error-msg" class="state-msg hidden">Error al conectar con la API.</p>
+    </aside>
+
+    <section id="content">
+      <div id="content-placeholder" class="placeholder">
+        <p>Selecciona un documento de la lista.</p>
+      </div>
+
+      <div id="content-detail" class="hidden">
+        <div id="detail-header">
+          <h2 id="detail-title"></h2>
+          <p id="detail-meta"></p>
+          <div id="detail-tags"></div>
+          <div id="detail-actions" class="detail-actions">
+            <button id="btn-versions" class="btn-action">Historial de versiones</button>
+            <button id="btn-audit" class="btn-action">Auditoría</button>
+          </div>
+        </div>
+        <div id="detail-body"></div>
+      </div>
+
+      <div id="history-panel" class="hidden sidebar-panel">
+        <div class="panel-header">
+          <h3>Historial de versiones</h3>
+          <button id="btn-back-detail" class="btn-back">← Volver</button>
+        </div>
+        <div id="version-list"></div>
+      </div>
+
+      <div id="audit-panel" class="hidden sidebar-panel">
+        <div class="panel-header">
+          <h3>Auditoría</h3>
+          <button id="btn-back-audit" class="btn-back">← Volver</button>
+        </div>
+        <div id="audit-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="login-dialog" class="login-overlay hidden">
+    <div class="login-card">
+      <h2>Iniciar sesión</h2>
+      <p>Ingresa tus credenciales para acceder a funciones administrativas.</p>
+      <input type="text" id="login-user-input" placeholder="Usuario">
+      <input type="password" id="login-pass-input" placeholder="Contraseña">
+      <div class="login-actions">
+        <button id="login-confirm-btn" class="btn-action">Ingresar</button>
+        <button id="login-cancel-btn" class="btn-back">Cancelar</button>
+      </div>
+      <p id="login-error" class="login-error hidden">Credenciales inválidas.</p>
+    </div>
+  </div>
+
+  <script src="js/api-client.js"></script>
+  <script src="js/ui/document-list.js"></script>
+  <script src="js/ui/document-viewer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
