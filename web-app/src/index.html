@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <title>KnowVault-Core Web</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header id="header">
+    <h1>KnowVault-Core Web</h1>
+    <span id="status-badge" class="badge badge-loading">Conectando…</span>
+    <span id="user-badge" class="badge badge-user hidden">Sin sesión</span>
+    <button id="login-btn" class="auth-btn" title="Iniciar sesión">🔑</button>
+    <button id="logout-btn" class="auth-btn hidden" title="Cerrar sesión">🚪 Cerrar sesión</button>
+    <input type="text" id="search-input" placeholder="Buscar documentos…">
+  </header>
+
+  <div id="login-gate" class="login-gate hidden">
+    <div class="login-card">
+      <h1>KnowVault-Core</h1>
+      <p>Ingresa tus credenciales para acceder al sistema.</p>
+      <input type="text" id="login-user-input" placeholder="Usuario">
+      <input type="password" id="login-pass-input" placeholder="Contraseña">
+      <button id="login-gate-btn">Ingresar</button>
+      <p id="login-error" class="login-error hidden">Credenciales inválidas.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <aside id="sidebar">
+      <h2>Documentos</h2>
+      <ul id="document-list"></ul>
+      <p id="loading-msg" class="state-msg">Cargando…</p>
+      <p id="empty-msg" class="state-msg hidden">No hay documentos publicados.</p>
+      <p id="error-msg" class="state-msg hidden">Error al conectar con la API.</p>
+    </aside>
+
+    <section id="content">
+      <div id="content-placeholder" class="placeholder">
+        <p>Selecciona un documento de la lista.</p>
+      </div>
+      <div id="content-detail" class="hidden">
+        <div id="detail-header">
+          <h2 id="detail-title"></h2>
+          <button id="edit-btn" class="btn-primary hidden">✏️ Editar</button>
+          <button id="cancel-edit-btn" class="btn-secondary hidden">Cancelar</button>
+        </div>
+        <p id="detail-meta"></p>
+        <div id="detail-body"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="edit-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h2>Editar documento</h2>
+      <label>Título</label>
+      <input type="text" id="edit-title">
+      <label>Resumen</label>
+      <input type="text" id="edit-summary">
+      <label>Contenido Markdown</label>
+      <textarea id="edit-markdown" rows="16"></textarea>
+      <div class="modal-actions">
+        <button id="save-edit-btn" class="btn-primary">💾 Guardar</button>
+        <button id="close-edit-btn" class="btn-secondary">Cancelar</button>
+      </div>
+      <p id="edit-error" class="login-error hidden"></p>
+    </div>
+  </div>
+
+  <script src="js/api-client.js"></script>
+  <script src="js/ui/document-list.js"></script>
+  <script src="js/ui/document-viewer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
