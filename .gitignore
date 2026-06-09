@@ -1,0 +1,33 @@
+# .NET
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Node
+node_modules/
+dist/
+build/
+coverage/
+
+# Logs
+*.log
+*.tmp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Test results
+test-results/
+.playwright/
+.ms-playwright/
+
+# Environment
+.env
+!.env.example
