@@ -1,0 +1,14 @@
+{
+  "name": "KnowVault-Core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "KnowVault-Core — CMS ligero con ASP.NET Core, PostgreSQL y Electron",
+  "scripts": {
+    "test": "npx playwright test --reporter=list",
+    "test:ui": "npx playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
+  }
+}
+

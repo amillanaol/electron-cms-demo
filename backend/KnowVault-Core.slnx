@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/KnowVault-Core.Api/KnowVault-Core.Api.csproj" />
+    <Project Path="src/KnowVault-Core.Application/KnowVault-Core.Application.csproj" />
+    <Project Path="src/KnowVault-Core.Domain/KnowVault-Core.Domain.csproj" />
+    <Project Path="src/KnowVault-Core.Infrastructure/KnowVault-Core.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/KnowVault-Core.UnitTests/KnowVault-Core.UnitTests.csproj" />
+    <Project Path="tests/KnowVault-Core.IntegrationTests/KnowVault-Core.IntegrationTests.csproj" />
+  </Folder>
+</Solution>
+
