@@ -25,6 +25,7 @@ ehthumbs.db
 
 # Test results
 test-results/
+playwright-report/
 .playwright/
 .ms-playwright/
 
