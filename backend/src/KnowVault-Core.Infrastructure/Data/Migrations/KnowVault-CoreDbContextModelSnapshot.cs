@@ -202,6 +202,56 @@ namespace KnowVaultCore.Infrastructure.Data.Migrations
                     b.ToTable("content_document_versions", (string)null);
                 });
 
+            modelBuilder.Entity("KnowVaultCore.Domain.Entities.Group", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("varchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("groups", (string)null);
+                });
+
+            modelBuilder.Entity("KnowVaultCore.Domain.Entities.GroupPermission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Resource")
+                        .IsRequired()
+                        .HasColumnType("varchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId", "Resource", "Action")
+                        .IsUnique();
+
+                    b.ToTable("group_permissions", (string)null);
+                });
+
             modelBuilder.Entity("KnowVaultCore.Domain.Entities.ContentDocumentAudit", b =>
                 {
                     b.HasOne("KnowVaultCore.Domain.Entities.ContentDocument", "Document")
@@ -235,6 +285,17 @@ namespace KnowVaultCore.Infrastructure.Data.Migrations
                     b.Navigation("Document");
                 });
 
+            modelBuilder.Entity("KnowVaultCore.Domain.Entities.GroupPermission", b =>
+                {
+                    b.HasOne("KnowVaultCore.Domain.Entities.Group", "Group")
+                        .WithMany("Permissions")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+                });
+
             modelBuilder.Entity("KnowVaultCore.Domain.Entities.ContentDocument", b =>
                 {
                     b.Navigation("AuditTrail");
@@ -242,6 +303,11 @@ namespace KnowVaultCore.Infrastructure.Data.Migrations
                     b.Navigation("Tags");
 
                     b.Navigation("Versions");
+                });
+
+            modelBuilder.Entity("KnowVaultCore.Domain.Entities.Group", b =>
+                {
+                    b.Navigation("Permissions");
                 });
 #pragma warning restore 612, 618
         }
