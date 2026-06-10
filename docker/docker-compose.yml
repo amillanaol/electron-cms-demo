@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: ./web-app
+      context: ../web-app
       dockerfile: Dockerfile
     ports:
       - "3000:80"
@@ -13,7 +13,7 @@ services:
 
   api:
     build:
-      context: ./backend
+      context: ../backend
       dockerfile: src/KnowVault-Core.Api/Dockerfile
     ports:
       - "8080:8080"
